@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>beijing</string>
+	<string>anhui</string>
+	<string>changsha</string>
+	<string>chongqing</string>
+	<string>fujian</string>
+	<string>gansu</string>
+	<string>guangdong</string>
+	<string>guangxi</string>
+	<string>guangzhou</string>
+	<string>guizhou</string>
+	<string>hebei</string>
+	<string>heilongjiang</string>
+	<string>hubei</string>
+	<string>jilin</string>
+	<string>nanjing</string>
+	<string>neimenggu</string>
+	<string>ningxia</string>
+	<string>qinghai</string>
+	<string>shanghai</string>
+	<string>shanxi</string>
+	<string>shenyang</string>
+	<string>shenzhen</string>
+	<string>sichuan</string>
+	<string>xian</string>
+	<string>yunnan</string>
+	<string>zhejiang</string>
+	<string>zhengzhou</string>
+	<string>hangzhou</string>
+</array>
+</plist>

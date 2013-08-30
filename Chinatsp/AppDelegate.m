@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
-#import "ViewController.h"
+#import "HomeViewController.h"
+#import "BMapKit.h"
+#import "config.h"
 
 @implementation AppDelegate
 
@@ -16,16 +17,30 @@
 {
     [_window release];
     [_viewController release];
+    [_mapManager release];
+    [_mKSearch release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    _mapManager=[[BMKMapManager alloc] init];
+    BOOL ret=[_mapManager start:BAIDUKEY generalDelegate:nil];
+    if(!ret)
+    {
+        NSLog(@"manager start failed!");
+    }
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.mKSearch=[[[BMKSearch alloc] init] autorelease];
+    [BMKSearch setPageCapacity:30];
     // Override point for customization after application launch.
-    self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
+    HomeViewController *home=[[HomeViewController alloc] init];
+    UINavigationController *homenav=[[UINavigationController alloc] initWithRootViewController:home];
+    self.viewController = homenav;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    [homenav release];
+    [home release];
     return YES;
 }
 
