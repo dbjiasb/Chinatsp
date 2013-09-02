@@ -81,7 +81,6 @@
 		2517713217CB577300AA6AAD /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2517712917CB577300AA6AAD /* SDWebImagePrefetcher.m */; };
 		2517713317CB577300AA6AAD /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2517712B17CB577300AA6AAD /* UIButton+WebCache.m */; };
 		2517713417CB577300AA6AAD /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2517712D17CB577300AA6AAD /* UIImageView+WebCache.m */; };
-		2517713817CB599800AA6AAD /* TSPUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2517713717CB599800AA6AAD /* TSPUtils.m */; };
 		2517713A17CB5CF600AA6AAD /* publish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2517713917CB5CF600AA6AAD /* publish@2x.png */; };
 		2527A33817CC3ECD0042F475 /* bg_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 2527A33717CC3ECD0042F475 /* bg_home.png */; };
 		2527A34117CC3F470042F475 /* l_d_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 2527A33917CC3F470042F475 /* l_d_n.png */; };
@@ -186,7 +185,6 @@
 		2593E7DA171E7ECF0056421B /* map_grade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2593E7D8171E7ECF0056421B /* map_grade@2x.png */; };
 		2593E7DB171E7ECF0056421B /* service_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2593E7D9171E7ECF0056421B /* service_icon@2x.png */; };
 		2593E7DF171E80C30056421B /* UnionTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2593E7DE171E80C30056421B /* UnionTabViewController.m */; };
-		2593E7E2171E812D0056421B /* CarBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2593E7E1171E812D0056421B /* CarBlogViewController.m */; };
 		2593E7E5171E816E0056421B /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2593E7E4171E816E0056421B /* ActivityViewController.m */; };
 		2593E7EE171E839D0056421B /* union_bt0_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 2593E7E6171E839D0056421B /* union_bt0_press.png */; };
 		2593E7EF171E839D0056421B /* union_bt0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2593E7E7171E839D0056421B /* union_bt0.png */; };
@@ -332,6 +330,13 @@
 		259FED371737AB77006DD5D0 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 259FED2F1737AB77006DD5D0 /* whiteArrow.png */; };
 		259FED381737AB77006DD5D0 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 259FED301737AB77006DD5D0 /* whiteArrow@2x.png */; };
 		259FED3B1737AB88006DD5D0 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 259FED3A1737AB88006DD5D0 /* EGORefreshTableHeaderView.m */; };
+		25A0739517D4747C0042E955 /* CarBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A0739417D4747C0042E955 /* CarBlogViewController.m */; };
+		25A0739817D474C90042E955 /* ActivitysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A0739717D474C90042E955 /* ActivitysViewController.m */; };
+		25A0739A17D488B90042E955 /* bg_navi.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A0739917D488B90042E955 /* bg_navi.png */; };
+		25A0739D17D48C790042E955 /* MyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A0739C17D48C790042E955 /* MyUtil.m */; };
+		25A0739F17D490200042E955 /* bg_navi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A0739E17D490200042E955 /* bg_navi@2x.png */; };
+		25A073A217D4958F0042E955 /* EMarketing_BarButtonItemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A073A117D4958F0042E955 /* EMarketing_BarButtonItemUtil.m */; };
+		25A073A417D496730042E955 /* btn_back_home1.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A073A317D496730042E955 /* btn_back_home1.png */; };
 		25A3D9AA178A4C91008BD558 /* close_air@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A3D9A9178A4C91008BD558 /* close_air@2x.png */; };
 		25A3D9AC178A4C98008BD558 /* open_air@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A3D9AB178A4C98008BD558 /* open_air@2x.png */; };
 		25A3D9B3178A95B2008BD558 /* MyIndexArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25A3D9AD178A95B1008BD558 /* MyIndexArray.plist */; };
@@ -562,8 +567,6 @@
 		2517712B17CB577300AA6AAD /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
 		2517712C17CB577300AA6AAD /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		2517712D17CB577300AA6AAD /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
-		2517713617CB599800AA6AAD /* TSPUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPUtils.h; sourceTree = "<group>"; };
-		2517713717CB599800AA6AAD /* TSPUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPUtils.m; sourceTree = "<group>"; };
 		2517713917CB5CF600AA6AAD /* publish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publish@2x.png"; sourceTree = "<group>"; };
 		2527A33717CC3ECD0042F475 /* bg_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_home.png; sourceTree = "<group>"; };
 		2527A33917CC3F470042F475 /* l_d_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = l_d_n.png; sourceTree = "<group>"; };
@@ -692,8 +695,6 @@
 		2593E7D9171E7ECF0056421B /* service_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service_icon@2x.png"; sourceTree = "<group>"; };
 		2593E7DD171E80C30056421B /* UnionTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionTabViewController.h; sourceTree = "<group>"; };
 		2593E7DE171E80C30056421B /* UnionTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionTabViewController.m; sourceTree = "<group>"; };
-		2593E7E0171E812D0056421B /* CarBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarBlogViewController.h; sourceTree = "<group>"; };
-		2593E7E1171E812D0056421B /* CarBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarBlogViewController.m; sourceTree = "<group>"; };
 		2593E7E3171E816E0056421B /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		2593E7E4171E816E0056421B /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		2593E7E6171E839D0056421B /* union_bt0_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = union_bt0_press.png; sourceTree = "<group>"; };
@@ -865,6 +866,17 @@
 		259FED301737AB77006DD5D0 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		259FED391737AB88006DD5D0 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		259FED3A1737AB88006DD5D0 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		25A0739317D4747C0042E955 /* CarBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarBlogViewController.h; sourceTree = "<group>"; };
+		25A0739417D4747C0042E955 /* CarBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarBlogViewController.m; sourceTree = "<group>"; };
+		25A0739617D474C90042E955 /* ActivitysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitysViewController.h; sourceTree = "<group>"; };
+		25A0739717D474C90042E955 /* ActivitysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitysViewController.m; sourceTree = "<group>"; };
+		25A0739917D488B90042E955 /* bg_navi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_navi.png; sourceTree = "<group>"; };
+		25A0739B17D48C790042E955 /* MyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUtil.h; sourceTree = "<group>"; };
+		25A0739C17D48C790042E955 /* MyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUtil.m; sourceTree = "<group>"; };
+		25A0739E17D490200042E955 /* bg_navi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_navi@2x.png"; sourceTree = "<group>"; };
+		25A073A017D4958F0042E955 /* EMarketing_BarButtonItemUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMarketing_BarButtonItemUtil.h; sourceTree = "<group>"; };
+		25A073A117D4958F0042E955 /* EMarketing_BarButtonItemUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMarketing_BarButtonItemUtil.m; sourceTree = "<group>"; };
+		25A073A317D496730042E955 /* btn_back_home1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_home1.png; sourceTree = "<group>"; };
 		25A3D9A9178A4C91008BD558 /* close_air@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_air@2x.png"; sourceTree = "<group>"; };
 		25A3D9AB178A4C98008BD558 /* open_air@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "open_air@2x.png"; sourceTree = "<group>"; };
 		25A3D9AD178A95B1008BD558 /* MyIndexArray.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = MyIndexArray.plist; path = ../MyIndexArray.plist; sourceTree = "<group>"; };
@@ -1052,6 +1064,8 @@
 		250E90A017CD9D66006BB090 /* navi_images */ = {
 			isa = PBXGroup;
 			children = (
+				25A0739E17D490200042E955 /* bg_navi@2x.png */,
+				25A0739917D488B90042E955 /* bg_navi.png */,
 				250E910517CDC88F006BB090 /* addoil.png */,
 				250E910617CDC88F006BB090 /* park.png */,
 				250E910717CDC88F006BB090 /* position.png */,
@@ -1083,6 +1097,7 @@
 		250E90BF17CDABDF006BB090 /* TigerUnion */ = {
 			isa = PBXGroup;
 			children = (
+				25A0739217D474460042E955 /* controllers */,
 				250E90C017CDAC0E006BB090 /* TigerUnionViewController.h */,
 				250E90C117CDAC0E006BB090 /* TigerUnionViewController.m */,
 			);
@@ -1238,6 +1253,7 @@
 			children = (
 				250E911517CDCC37006BB090 /* demoimg.jpg */,
 				250E90F917CDC593006BB090 /* btn_back_home.png */,
+				25A073A317D496730042E955 /* btn_back_home1.png */,
 				250E90F417CDB8CD006BB090 /* WashingCar */,
 				250E90DB17CDB42A006BB090 /* mycarin */,
 				250E90D017CDB15D006BB090 /* carshop */,
@@ -1316,8 +1332,10 @@
 		2517713517CB596C00AA6AAD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				2517713617CB599800AA6AAD /* TSPUtils.h */,
-				2517713717CB599800AA6AAD /* TSPUtils.m */,
+				25A073A017D4958F0042E955 /* EMarketing_BarButtonItemUtil.h */,
+				25A073A117D4958F0042E955 /* EMarketing_BarButtonItemUtil.m */,
+				25A0739B17D48C790042E955 /* MyUtil.h */,
+				25A0739C17D48C790042E955 /* MyUtil.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1490,8 +1508,6 @@
 				25AD2C7C1753516100CAA6C2 /* AddBlogViewController.m */,
 				2593E7DD171E80C30056421B /* UnionTabViewController.h */,
 				2593E7DE171E80C30056421B /* UnionTabViewController.m */,
-				2593E7E0171E812D0056421B /* CarBlogViewController.h */,
-				2593E7E1171E812D0056421B /* CarBlogViewController.m */,
 				2593E7E3171E816E0056421B /* ActivityViewController.h */,
 				2593E7E4171E816E0056421B /* ActivityViewController.m */,
 				2593E7F6171E854B0056421B /* ChatViewController.h */,
@@ -1751,6 +1767,17 @@
 				258CCD6617266F2F000E1AD0 /* UINavigationBar+setBackground.m */,
 			);
 			name = CustomVIew;
+			sourceTree = "<group>";
+		};
+		25A0739217D474460042E955 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				25A0739317D4747C0042E955 /* CarBlogViewController.h */,
+				25A0739417D4747C0042E955 /* CarBlogViewController.m */,
+				25A0739617D474C90042E955 /* ActivitysViewController.h */,
+				25A0739717D474C90042E955 /* ActivitysViewController.m */,
+			);
+			path = controllers;
 			sourceTree = "<group>";
 		};
 		25C8784217CC7E33001B111F /* animate_imgs */ = {
@@ -2365,6 +2392,9 @@
 				2535A1BA17CDD21B003D13E6 /* AddOilCell.xib in Resources */,
 				21FBFFCD17CFA0AF00EC1011 /* ParkingCell.xib in Resources */,
 				254BBBA717D045C3006A37E7 /* RemoteCheckCell.xib in Resources */,
+				25A0739A17D488B90042E955 /* bg_navi.png in Resources */,
+				25A0739F17D490200042E955 /* bg_navi@2x.png in Resources */,
+				25A073A417D496730042E955 /* btn_back_home1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2422,7 +2452,6 @@
 				2593E7C2171E5B450056421B /* NSString+DDXML.m in Sources */,
 				2593E7D1171E79900056421B /* MallViewController.m in Sources */,
 				2593E7DF171E80C30056421B /* UnionTabViewController.m in Sources */,
-				2593E7E2171E812D0056421B /* CarBlogViewController.m in Sources */,
 				2593E7E5171E816E0056421B /* ActivityViewController.m in Sources */,
 				2593E7F8171E854B0056421B /* ChatViewController.m in Sources */,
 				2593E7FB171E855A0056421B /* CarFriendViewController.m in Sources */,
@@ -2451,7 +2480,6 @@
 				2517713217CB577300AA6AAD /* SDWebImagePrefetcher.m in Sources */,
 				2517713317CB577300AA6AAD /* UIButton+WebCache.m in Sources */,
 				2517713417CB577300AA6AAD /* UIImageView+WebCache.m in Sources */,
-				2517713817CB599800AA6AAD /* TSPUtils.m in Sources */,
 				2527A34C17CC4AEB0042F475 /* SCGIFImageView.m in Sources */,
 				250E909117CD9066006BB090 /* LoveCarServiceViewController.m in Sources */,
 				250E90C217CDAC0E006BB090 /* TigerUnionViewController.m in Sources */,
@@ -2474,6 +2502,10 @@
 				21FBFFCB17CFA04500EC1011 /* ParkingCell.m in Sources */,
 				254BBBA117D03FDA006A37E7 /* RemoteCheckViewController.m in Sources */,
 				254BBBA517D045B4006A37E7 /* RemoteCheckCell.m in Sources */,
+				25A0739517D4747C0042E955 /* CarBlogViewController.m in Sources */,
+				25A0739817D474C90042E955 /* ActivitysViewController.m in Sources */,
+				25A0739D17D48C790042E955 /* MyUtil.m in Sources */,
+				25A073A217D4958F0042E955 /* EMarketing_BarButtonItemUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

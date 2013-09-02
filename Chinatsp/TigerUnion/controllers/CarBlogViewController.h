@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
-@class  LoadingMoreFooterView;
 
+/*
+   车博分享
+ */
+@class  LoadingMoreFooterView;
 @interface CarBlogViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate>
 {
     UIActivityIndicatorView *progressdialog;

@@ -8,9 +8,16 @@
 
 #import "ParkingViewController.h"
 #import "ParkingCell.h"
+#import "NetService.h"
+#import "UIHelper.h"
+#import "ParkingLot.h"
 
 @interface ParkingViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    NSMutableArray *_dataList;
+    UIActivityIndicatorView *progressdialog;
 
+}
 @end
 
 @implementation ParkingViewController
@@ -24,14 +31,30 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [_tableView release];
+    _tableView = nil;
+    
+    [progressdialog release];
+    progressdialog = nil;
+    
+    [_dataList release];
+    _dataList = nil;
+    
+    [super dealloc];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    _dataList = [[NSMutableArray alloc] init];
+    
     [self loadBG];
     [self loadHeaderView];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 48, 320, [TSPUtils viewHeight] - 48) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 48, 320, [MyUtil viewHeight] - 48) style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -39,6 +62,7 @@
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.backgroundView = nil;
     
+    [self getDataInThread];
 }
 
 - (void)loadHeaderView
@@ -63,7 +87,7 @@
 
 - (void)loadBG
 {
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [TSPUtils viewHeight] - 45)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [MyUtil viewHeight] - 45)];
     bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];
@@ -87,6 +111,13 @@
         
     }
     
+    if ([_dataList count] > indexPath.row)
+    {
+        ParkingLot *pl = [_dataList objectAtIndex:indexPath.row];
+        cell.nameLabel.text = pl.title;
+        cell.phoneLabel.text = pl.tel;
+    }
+    
     return cell;
 }
 
@@ -105,6 +136,75 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+//获取加油数据
+-(void)getDataInThread
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+                   ^{
+                       NSData *data=[[NetService singleHttpService] getCollectListWithType:3];
+                       
+                       dispatch_async(dispatch_get_main_queue(),
+                                      ^{
+                                          [self getResult:data];
+                                      });
+                   }) ;
+}
+
+-(void)getResult:(NSData *)data
+{
+    [self closeProgressDialog];
+    if(data)
+    {
+        NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        //        dataStr = [dataStr stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+        NSDictionary *nd=[dataStr objectFromJSONString];
+        //        NSLog(@"%@",dataStr);
+        if([@"OK" isEqualToString:[nd objectForKey:@"resp_status"]])
+        {
+            if([@"" isEqualToString:[nd objectForKey:@"resp_data"]])
+            {
+                [UIHelper showAlertview:@"目前没有收藏纪录哦"];
+            }
+            else
+            {
+                NSDictionary *respNd=[nd objectForKey:@"resp_data"];
+                NSArray *valuearray=respNd.allValues;
+                for (NSDictionary *dic in valuearray)
+                {
+                    ParkingLot *pl = [[ParkingLot alloc] init];
+                    [pl fillFromDictionary:dic];
+                    
+                    [_dataList addObject:pl];
+                    [pl release];
+                }
+                if ([_dataList count] > 0)
+                {
+                    [_tableView reloadData];
+                }
+            }
+        }
+        else
+        {
+            [UIHelper showAlertview:@"获取数据失败,请稍后在试"];
+        }
+    }
+    else
+    {
+        [UIHelper showAlertview:@"网络异常"];
+    }
+}
+
+-(void)closeProgressDialog
+{
+    if (progressdialog) {
+        [progressdialog stopAnimating];
+        [progressdialog.superview removeFromSuperview];
+        progressdialog = nil;
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -7,6 +7,7 @@
 //
 
 #import "TigerUnionViewController.h"
+#import "CarBlogViewController.h"
 
 @interface TigerUnionViewController ()
 
@@ -19,6 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = @"虎翼联盟";
     }
     return self;
 }
@@ -27,18 +29,28 @@
 {
     [super viewDidLoad];
     
+    
+    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"首页" imageName:@"btn_back_home1" target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    
+    [self.navigationItem setCustomTitle:@"虎翼联盟"];
+    
     _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_scrollView];
     
     [self loadBG];
-    [self loadHeaderView];
+//    [self loadHeaderView];
     [self loadButtons];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
 
 - (void)loadBG
 {
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [TSPUtils viewHeight] - 45)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, [MyUtil viewHeight])];
     bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];
@@ -76,7 +88,7 @@
         NSString *name = [NSString stringWithFormat:@"icon_tigerunion_%d",i + 1];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
-        [button setFrame:CGRectMake(17 + 75 * x, 80 + 105 * y, 60, 60)];
+        [button setFrame:CGRectMake(17 + 75 * x, 25 + 105 * y, 60, 60)];
         button.tag = i;
         [button addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
@@ -100,7 +112,13 @@
 {
     switch (button.tag) {
         case 0:
+        { //车博分享
+            CarBlogViewController *controller = [[CarBlogViewController alloc] init];
             
+            [self.navigationController pushViewController:controller animated:YES];
+            
+            [controller release];
+        }
             break;
             
         default:

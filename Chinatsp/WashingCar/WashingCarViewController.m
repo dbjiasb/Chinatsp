@@ -39,7 +39,7 @@
     [self loadBG];
     [self loadHeaderView];
 
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 48, 320, [TSPUtils viewHeight] - 48) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 48, 320, [MyUtil viewHeight] - 48) style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -59,9 +59,7 @@
 
                        dispatch_async(dispatch_get_main_queue(),
                                       ^{
-                                          [self performSelectorOnMainThread:@selector(getResult:)
-                                                                 withObject:data
-                                                              waitUntilDone:NO];
+                                          [self getResult:data];
                                       });
                    }) ;
 }
@@ -139,7 +137,7 @@
 
 - (void)loadBG
 {
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [TSPUtils viewHeight] - 45)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [MyUtil viewHeight] - 45)];
     bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];

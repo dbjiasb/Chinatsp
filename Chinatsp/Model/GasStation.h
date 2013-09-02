@@ -12,4 +12,6 @@
 @interface GasStation : Position
 @property (nonatomic, retain) NSArray *gasItems; //油价表
 
+- (void)fillFromDictionary:(NSDictionary *)dic;
+
 @end

@@ -13,4 +13,6 @@
 @property (nonatomic, retain) NSNumber *remainCount;//剩余车位
 @property (nonatomic, retain) NSNumber *pricePerHour;//每小时费用
 
+- (void)fillFromDictionary:(NSDictionary *)dic;
+
 @end

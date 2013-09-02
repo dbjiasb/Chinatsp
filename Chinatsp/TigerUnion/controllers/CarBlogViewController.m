@@ -41,30 +41,75 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.tintColor=[UIColor blackColor];
-    self.view.backgroundColor=[UIColor blackColor];
-    self.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"首页" style:UIBarButtonItemStyleBordered target:self action:@selector(btnClick)] autorelease];
-    self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(editClick)] autorelease];
+    
+    [self loadBG];
+    [self loadHeaderView];
+    
+//    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 22)];
+//    title.textColor = [UIColor redColor];
+//    title.text = @"车博";
+//    title.textAlignment = UITextAlignmentCenter;
+//    title.font = [UIFont boldSystemFontOfSize:18];
+//    title.backgroundColor = [UIColor clearColor];
+//    self.navigationItem.titleView = title;
+
+//    self.navigationController.navigationBar.tintColor=[UIColor blackColor];
+//    self.view.backgroundColor=[UIColor blackColor];
+//    self.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"首页" style:UIBarButtonItemStyleBordered target:self action:@selector(btnClick)] autorelease];
+//    self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(editClick)] autorelease];
     [self initViews];
     [self createProgressDialog];
     [NSThread detachNewThreadSelector:@selector(getTableListInThread) toTarget:self withObject:nil];
 	// Do any additional setup after loading the view.
 }
 
--(void)initViews
+- (void)loadBG
 {
-    UIView *bg=[[UIView alloc] initWithFrame:CGRectMake(0.0,0.0, 320.0, 460.0-44.0+(iPhone5?88:0))];
-    if(iPhone5)
-    {
-        bg.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg-568h"]];
-    }else
-    {
-        bg.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg"]];
-    }
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [MyUtil viewHeight] - 45)];
+    bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];
+}
+
+- (void)loadHeaderView
+{
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
     
-    table=[[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 460.0-70.5-44.0+(iPhone5?88:0))];
+    UIImageView *navi = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
+    navi.image = [UIImage imageNamed:@"wash"];
+    [self.view addSubview:navi];
+    [navi release];
+    
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setFrame:CGRectMake(4, 4, 60, 38)];
+    [leftBtn setImage:[UIImage imageNamed:@"btn_back_home"] forState:UIControlStateNormal];
+    [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [header addSubview:leftBtn];
+    
+    [self.view addSubview:header];
+    
+    [header release];
+}
+
+- (void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)initViews
+{
+//    UIView *bg=[[UIView alloc] initWithFrame:CGRectMake(0.0,0.0, 320.0, 460.0-44.0+(iPhone5?88:0))];
+//    if(iPhone5)
+//    {
+//        bg.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg-568h"]];
+//    }else
+//    {
+//        bg.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg"]];
+//    }
+//    [self.view addSubview:bg];
+//    [bg release];
+    
+    table=[[UITableView alloc] initWithFrame:CGRectMake(0.0, 48.0, 320.0, 460.0 - 44.0+(iPhone5 ? 88 : 0))];
     table.delegate=self;
     table.dataSource=self;
     table.separatorStyle=NO;
@@ -327,7 +372,7 @@
     
     UILabel *content=[[[UILabel alloc] initWithFrame:CGRectMake(5.0, 5.0, 300.0, 25.0)] autorelease];
     content.numberOfLines=0;
-    content.textColor=[UIColor whiteColor];
+    content.textColor=[UIColor blackColor];
     content.backgroundColor=[UIColor clearColor];
     content.text=[[totalarray objectAtIndex:[indexPath row]] objectForKey:@"content"];
     [content sizeToFit];

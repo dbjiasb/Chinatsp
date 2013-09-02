@@ -18,7 +18,7 @@
 
 +(NSString *)getUserName
 {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:@"UserName"];
+    return [[NSUserDefaults standardUserDefaults] stringForKey:@"UserName"] ? [[NSUserDefaults standardUserDefaults] stringForKey:@"UserName"] : @"23285";
 }
 
 +(void)setPwd:(NSString *)pwd

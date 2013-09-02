@@ -10,6 +10,10 @@
 
 @interface ParkingCell : UITableViewCell
 
+@property (nonatomic, retain) IBOutlet UILabel *nameLabel;
+@property (nonatomic, retain) IBOutlet UILabel *addrLabel;
+@property (nonatomic, retain) IBOutlet UILabel *phoneLabel;
+
 + (ParkingCell *)parkingCell;
 
 

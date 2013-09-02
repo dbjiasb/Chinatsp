@@ -39,6 +39,7 @@
 #import "ParkingViewController.h"
 #import "BreakRulesViewController.h"
 
+
 @interface HomeViewController ()
 {
     
@@ -82,8 +83,8 @@
 {
     float offsetY = 0;
 
-    UIImageView *homeBg=[[[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, [TSPUtils viewHeight])] autorelease];
-    if ([TSPUtils isIphone5])
+    UIImageView *homeBg=[[[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, [MyUtil viewHeight])] autorelease];
+    if ([MyUtil isIphone5])
     {
         homeBg.image=[UIImage imageNamed:@"bg-shouye_560h"];
         offsetY = 50;
@@ -134,7 +135,7 @@
 {
     float offsetY = 0;
 
-    if([TSPUtils isIphone5])
+    if([MyUtil isIphone5])
     {
         offsetY = 50;
     }
@@ -208,7 +209,7 @@
     
     float offsetY = 0;
     
-    if([TSPUtils isIphone5])
+    if([MyUtil isIphone5])
     {
         offsetY = 50;
     }
@@ -270,8 +271,12 @@
     switch (button.tag) {
         case 1:
         {//虎翼联盟
+
             TigerUnionViewController *controller = [[TigerUnionViewController alloc] init];
-            [self presentViewController:controller animated:YES completion:^{
+            UINavigationController *naivController = [[UINavigationController alloc] initWithRootViewController:controller];
+//            naivController.navigationBarHidden = YES;
+
+            [self presentViewController:naivController animated:YES completion:^{
                 
                 [self hideCircleView];
                 
@@ -284,13 +289,15 @@
                 }];
             }];
             [controller release];
+            [naivController release];
         }
             break;
         case 2:
         {//爱车服务
-            LoveCarServiceViewController *controller = [[LoveCarServiceViewController alloc] init];
             
-            [self presentViewController:controller animated:YES completion:^{
+            LoveCarServiceViewController *controller = [[LoveCarServiceViewController alloc] init];
+            UINavigationController *naivController = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:naivController animated:YES completion:^{
                 
                 [self hideCircleView];
                 
@@ -303,13 +310,13 @@
                 }];
             }];
             [controller release];
+            [naivController release];
         }
             break;
         case 3:
         {//我的车载
             MyCarInViewController *controller = [[MyCarInViewController alloc] init];
             UINavigationController *naivController = [[UINavigationController alloc] initWithRootViewController:controller];
-            naivController.navigationBarHidden = YES;
             [self presentViewController:naivController animated:YES completion:^{
                 
                 [self hideCircleView];
@@ -331,7 +338,6 @@
             CarShopViewController *controller = [[CarShopViewController alloc] init];
             
             UINavigationController *naivController = [[UINavigationController alloc] initWithRootViewController:controller];
-            naivController.navigationBarHidden = YES;
 
             [self presentViewController:naivController animated:YES completion:^{
                 
@@ -418,7 +424,7 @@
         
         float offsetY = 0;
         
-        if ([TSPUtils isIphone5]) {
+        if ([MyUtil isIphone5]) {
             offsetY = 40;
         }
         

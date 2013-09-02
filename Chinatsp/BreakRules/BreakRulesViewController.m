@@ -63,7 +63,7 @@
 
 - (void)loadBG
 {
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [TSPUtils viewHeight] - 45)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [MyUtil viewHeight] - 45)];
     bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];
@@ -88,7 +88,7 @@
     [self.view addSubview:secondBtn];
     
     float offSetY = 0;
-    if ([TSPUtils isIphone5]) {
+    if ([MyUtil isIphone5]) {
         offSetY = 70;
     }
     

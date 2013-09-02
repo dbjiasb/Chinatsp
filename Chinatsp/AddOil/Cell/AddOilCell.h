@@ -10,6 +10,9 @@
 
 @interface AddOilCell : UITableViewCell
 
+@property (nonatomic, retain) IBOutlet UILabel *nameLabel;
+@property (nonatomic, retain) IBOutlet UILabel *addrLabel;
+
 + (AddOilCell *)addOilCell;
 
 @end

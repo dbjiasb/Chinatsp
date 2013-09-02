@@ -10,6 +10,7 @@
 #import "AddOilCell.h"
 #import "NetService.h"
 #import "UIHelper.h"
+#import "GasStation.h"
 
 @interface AddOilViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -29,15 +30,31 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [_tableView release];
+    _tableView = nil;
+    
+    [progressdialog release];
+    progressdialog = nil;
+    
+    [_dataList release];
+    _dataList = nil;
+    
+    [super dealloc];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    _dataList = [[NSMutableArray alloc] init];
+    
     [self loadBG];
     [self loadHeaderView];
 
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 48, 320, [TSPUtils viewHeight] - 48) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 48, 320, [MyUtil viewHeight] - 48) style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -45,6 +62,7 @@
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.backgroundView = nil;
 
+    [self getDataInThread];
 }
 
 - (void)loadHeaderView
@@ -69,11 +87,14 @@
 
 - (void)loadBG
 {
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [TSPUtils viewHeight] - 45)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [MyUtil viewHeight] - 45)];
     bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];
 }
+
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -91,6 +112,12 @@
     if (!cell) {
         cell = [AddOilCell addOilCell];
         
+    }
+    
+    if ([_dataList count] > indexPath.row)
+    {
+        GasStation *gs = [_dataList objectAtIndex:indexPath.row];
+        cell.nameLabel.text = gs.title;
     }
     
     return cell;
@@ -116,8 +143,15 @@
 //获取加油数据
 -(void)getDataInThread
 {
-    NSData *data=[[NetService singleHttpService] getCollectListWithType:2];
-    [self performSelectorOnMainThread:@selector(getResult:) withObject:data waitUntilDone:NO];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+                   ^{
+                       NSData *data=[[NetService singleHttpService] getCollectListWithType:2];
+                       
+                       dispatch_async(dispatch_get_main_queue(),
+                                      ^{
+                                          [self getResult:data];
+                                      });
+                   }) ;
 }
 
 -(void)getResult:(NSData *)data
@@ -125,7 +159,10 @@
     [self closeProgressDialog];
     if(data)
     {
-        NSDictionary *nd=[data objectFromJSONData];
+        NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        //        dataStr = [dataStr stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+        NSDictionary *nd=[dataStr objectFromJSONString];
+        //        NSLog(@"%@",dataStr);
         if([@"OK" isEqualToString:[nd objectForKey:@"resp_status"]])
         {
             if([@"" isEqualToString:[nd objectForKey:@"resp_data"]])
@@ -136,8 +173,18 @@
             {
                 NSDictionary *respNd=[nd objectForKey:@"resp_data"];
                 NSArray *valuearray=respNd.allValues;
-                [_dataList setArray:valuearray];
-                [_tableView reloadData];
+                for (NSDictionary *dic in valuearray)
+                {
+                    GasStation *gs = [[GasStation alloc] init];
+                    [gs fillFromDictionary:dic];
+                    
+                    [_dataList addObject:gs];
+                    [gs release];
+                }
+                if ([_dataList count] > 0)
+                {
+                    [_tableView reloadData];
+                }
             }
         }
         else
