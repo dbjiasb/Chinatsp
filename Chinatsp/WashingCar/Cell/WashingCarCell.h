@@ -12,6 +12,9 @@
 
 
 @property (retain, nonatomic) IBOutlet UILabel *nameLabel;
+@property (retain, nonatomic) IBOutlet UILabel *priceLabel;
+@property (retain, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (retain, nonatomic) IBOutlet UILabel *addrLabel;
 
 + (WashingCarCell *)washingCarCell;
 

@@ -53,8 +53,17 @@
 //获取洗车数据
 -(void)getDataInThread
 {
-    NSData *data=[[NetService singleHttpService] getCollectListWithType:1];
-    [self performSelectorOnMainThread:@selector(getResult:) withObject:data waitUntilDone:NO];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+                   ^{
+                       NSData *data=[[NetService singleHttpService] getCollectListWithType:1];
+
+                       dispatch_async(dispatch_get_main_queue(),
+                                      ^{
+                                          [self performSelectorOnMainThread:@selector(getResult:)
+                                                                 withObject:data
+                                                              waitUntilDone:NO];
+                                      });
+                   });
 }
 
 -(void)getResult:(NSData *)data
@@ -63,8 +72,9 @@
     if(data)
     {
         NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        dataStr = [dataStr stringByReplacingOccurrencesOfString:@"\\" withString:@""];
         NSDictionary *nd=[dataStr objectFromJSONString];
-        NSLog(@"%@",nd);
+//        NSLog(@"%@",dataStr);
         if([@"OK" isEqualToString:[nd objectForKey:@"resp_status"]])
         {
             if([@"" isEqualToString:[nd objectForKey:@"resp_data"]])
@@ -73,16 +83,16 @@
             }
             else
             {
-//                NSDictionary *respNd=[nd objectForKey:@"resp_data"];
-//                NSArray *valuearray=respNd.allValues;
-//                for (NSDictionary *dic in valuearray)
-//                {
-//                    CarWashing *wc = [[CarWashing alloc] init];
-//                    [wc fillFromDictionary:dic];
-//                    
-//                    [_dataList addObject:wc];
-//                    [wc release];
-//                }
+                NSDictionary *respNd=[nd objectForKey:@"resp_data"];
+                NSArray *valuearray=respNd.allValues;
+                for (NSDictionary *dic in valuearray)
+                {
+                    CarWashing *wc = [[CarWashing alloc] init];
+                    [wc fillFromDictionary:dic];
+                    
+                    [_dataList addObject:wc];
+                    [wc release];
+                }
                 [_tableView reloadData];
             }
         }
@@ -150,11 +160,12 @@
     
     if (!cell) {
         cell = [WashingCarCell washingCarCell];
-        
     }
     if ([_dataList count] > indexPath.row) {
         CarWashing *wc = [_dataList objectAtIndex:indexPath.row];
-        NSLog(@"%@",wc.title);
+        cell.nameLabel.text = wc.title;
+        cell.priceLabel.text = [NSString stringWithFormat:@"%@",wc.price];
+        cell.phoneLabel.text = [NSString stringWithFormat:@"%@",wc.tel];
     }
     
     return cell;

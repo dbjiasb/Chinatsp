@@ -14,7 +14,7 @@
 {
     if (self = [super init])
     {
-        self.price = @0;
+        self.price = @"0";
     }
     return self;
 }
@@ -27,14 +27,18 @@
     
     if (!ISNULL([dic objectForKey:@"poi_content"]))
     {
-        NSDictionary *contentDic = [dic objectForKey:@"poi_content"];
-        NSLog(@"%@",contentDic);
+        NSString *contentString = [dic objectForKey:@"poi_content"];
+        contentString = [contentString stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+        
+        NSDictionary *contentDic = [contentString objectFromJSONString];
         self.title = !ISNULL([contentDic objectForKey:@"title"]) ? [contentDic objectForKey:@"title"] : @"";
         self.lat = !ISNULL([contentDic objectForKey:@"lat"]) ? [contentDic objectForKey:@"lat"] : @0;
         self.lng = !ISNULL([contentDic objectForKey:@"lng"]) ? [contentDic objectForKey:@"lng"] : @0;
         self.description = !ISNULL([contentDic objectForKey:@"description"]) ? [contentDic objectForKey:@"description"] : @"";
         self.tel = !ISNULL([contentDic objectForKey:@"tel"]) ? [contentDic objectForKey:@"tel"] : @"";
-        self.price = !ISNULL([contentDic objectForKey:@"other"]) ? [contentDic objectForKey:@"other"] : @0;
+        
+        NSString *priceString = [[contentDic objectForKey:@"other"] stringByReplacingOccurrencesOfString:@"元" withString:@""];
+        self.price = !ISNULL(priceString) ? priceString : @"0";
     }
 }
 

@@ -209,7 +209,6 @@ NSString * double2str(NSString * format, double num);
 - (NSUInteger)countOccurrencesOfSubstring:(NSString *)substring;
 
 - (NSArray *)arrayOccurrencesOfSubstring:(NSString *)substring;
-
 @end
 
 #pragma mark - UIView (GD10000_Utilities)

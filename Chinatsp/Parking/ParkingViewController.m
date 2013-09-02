@@ -79,7 +79,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdenty = @"WashingCarCell";
+    static NSString *cellIdenty = @"ParkingCell";
     ParkingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdenty];
     
     if (!cell) {

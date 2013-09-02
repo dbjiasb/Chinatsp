@@ -10,7 +10,7 @@
 //洗车场
 @interface CarWashing : Position
 
-@property (nonatomic,retain) NSNumber *price; //价格
+@property (nonatomic,retain) NSString *price; //价格
 
 - (void)fillFromDictionary:(NSDictionary *)dic;
 
