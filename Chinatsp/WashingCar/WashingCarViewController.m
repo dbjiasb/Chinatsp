@@ -52,7 +52,7 @@
 
 //获取洗车数据
 -(void)getDataInThread
-{
+{   
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
                    ^{
                        NSData *data=[[NetService singleHttpService] getCollectListWithType:1];
@@ -63,7 +63,7 @@
                                                                  withObject:data
                                                               waitUntilDone:NO];
                                       });
-                   });
+                   }) ;
 }
 
 -(void)getResult:(NSData *)data
