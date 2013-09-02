@@ -32,13 +32,13 @@
 + (id)buttonWithTitle:(NSString *)title imageName:(NSString *)imageName target:(id)target action:(SEL)action
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *image = [UIImage imageUtilName:imageName];
+    UIImage *image = [UIImage imageNamed:imageName];
 //    NSString *downName = [NSString stringWithFormat:@"%@_down",imageName];
 //    UIImage *imageDown = [UIImage imageUtilName:downName];
     
     button.frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
     [button setNormalBgImage:image];
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:12];
     [button setTitleColor:RGBCOLOR(63, 78, 92) forState:UIControlStateNormal];
     [button setNormalTitle:title];
 //    [button setHighlightedBgImage:imageDown];

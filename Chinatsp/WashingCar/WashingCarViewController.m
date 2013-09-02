@@ -34,12 +34,17 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"首页" imageName:@"btn_back_home" target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    
+    [self.navigationItem setCustomTitle:@"洗车服务"];
+
     _dataList = [[NSMutableArray alloc] initWithCapacity:0];
     
     [self loadBG];
-    [self loadHeaderView];
+//    [self loadHeaderView];
 
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 48, 320, [MyUtil viewHeight] - 48) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, [MyUtil viewHeight] - 44) style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -137,7 +142,7 @@
 
 - (void)loadBG
 {
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [MyUtil viewHeight] - 45)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, [MyUtil viewHeight])];
     bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];
@@ -145,7 +150,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return [_dataList count];
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:

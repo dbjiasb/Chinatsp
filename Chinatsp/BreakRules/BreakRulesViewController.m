@@ -28,8 +28,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"首页" imageName:@"btn_back_home" target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    
+    [self.navigationItem setCustomTitle:@"停车查询"];
+
     [self loadBG];
-    [self loadHeaderView];
+//    [self loadHeaderView];
     [self loadContentView];
 
     
@@ -63,7 +68,7 @@
 
 - (void)loadBG
 {
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [MyUtil viewHeight] - 45)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, [MyUtil viewHeight])];
     bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];
@@ -72,18 +77,18 @@
 - (void)loadContentView
 {
     
-    UIImageView *bg_up = [[UIImageView alloc] initWithFrame:CGRectMake(5, 53, 310, 108)];
+    UIImageView *bg_up = [[UIImageView alloc] initWithFrame:CGRectMake(5, 13, 310, 108)];
     bg_up.image = [[UIImage imageNamed:@"fenlan-ios"] stretchableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     [self.view addSubview:bg_up];
     [bg_up release];
     
     UIButton *firstBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [firstBtn setFrame:CGRectMake(20, 68, 128, 74)];
+    [firstBtn setFrame:CGRectMake(20, 28, 128, 74)];
     [firstBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.view addSubview:firstBtn];
     
     UIButton *secondBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [secondBtn setFrame:CGRectMake(173, 68, 128, 74)];
+    [secondBtn setFrame:CGRectMake(173, 28, 128, 74)];
     [secondBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.view addSubview:secondBtn];
     
@@ -92,7 +97,7 @@
         offSetY = 70;
     }
     
-    UIImageView *bg_down = [[UIImageView alloc] initWithFrame:CGRectMake(5, 170, 310, 285 + offSetY)];
+    UIImageView *bg_down = [[UIImageView alloc] initWithFrame:CGRectMake(5, 130, 310, 285 + offSetY)];
     bg_down.image = [[UIImage imageNamed:@"fenlan-ios"] stretchableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     [self.view addSubview:bg_down];
     [bg_down release];

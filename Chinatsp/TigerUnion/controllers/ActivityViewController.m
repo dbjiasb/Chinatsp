@@ -42,27 +42,52 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.tintColor=[UIColor blackColor];
+    
+    [self.navigationItem setCustomTitle:@"组织活动"];
+    
+    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"返回" imageName:@"btn_back_home" target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    
+    UIBarButtonItem *rightBarBtn = [UIBarButtonItem buttonWithTitle:@"发起" imageName:@"btn_back_home" target:self action:@selector(addClick)];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    
+    self.navigationItem.rightBarButtonItem=rightBarBtn;
+    
     self.view.backgroundColor=[UIColor blackColor];
-    self.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"首页" style:UIBarButtonItemStyleBordered target:self action:@selector(btnClick)] autorelease];
-    self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"添加活动" style:UIBarButtonItemStyleBordered target:self action:@selector(addClick)] autorelease];
+    
+    [self loadBG];
     [self initViews];
     [self createProgressDialog];
     [NSThread detachNewThreadSelector:@selector(getTableListInThread) toTarget:self withObject:nil];
 	// Do any additional setup after loading the view.
 }
--(void)initViews
+
+
+- (void)loadBG
 {
-    UIView *bg=[[UIView alloc] initWithFrame:CGRectMake(0.0,0.0, 320.0, 460.0-44.0+(iPhone5?88:0))];
-    if(iPhone5)
-    {
-        bg.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg-568h"]];
-    }else
-    {
-        bg.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg"]];
-    }
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, [MyUtil viewHeight])];
+    bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];
+}
+
+- (void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)initViews
+{
+//    UIView *bg=[[UIView alloc] initWithFrame:CGRectMake(0.0,0.0, 320.0, 460.0-44.0+(iPhone5?88:0))];
+//    if(iPhone5)
+//    {
+//        bg.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg-568h"]];
+//    }else
+//    {
+//        bg.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg"]];
+//    }
+//    [self.view addSubview:bg];
+//    [bg release];
     
     table=[[UITableView alloc] initWithFrame:CGRectMake((320.0-304.5)/2,0.0, 304.5, 460.0-70.5-44.0+(iPhone5?88:0))];
     table.delegate=self;

@@ -42,8 +42,12 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"返回" imageName:@"btn_back_home" target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    [self.navigationItem setCustomTitle:@"车博分享"];
+
     [self loadBG];
-    [self loadHeaderView];
+//    [self loadHeaderView];
     
 //    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 22)];
 //    title.textColor = [UIColor redColor];
@@ -65,7 +69,7 @@
 
 - (void)loadBG
 {
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [MyUtil viewHeight] - 45)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, [MyUtil viewHeight])];
     bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];
@@ -109,7 +113,7 @@
 //    [self.view addSubview:bg];
 //    [bg release];
     
-    table=[[UITableView alloc] initWithFrame:CGRectMake(0.0, 48.0, 320.0, 460.0 - 44.0+(iPhone5 ? 88 : 0))];
+    table=[[UITableView alloc] initWithFrame:CGRectMake(0.0, 0, 320.0, 460.0 - 44.0+(iPhone5 ? 88 : 0))];
     table.delegate=self;
     table.dataSource=self;
     table.separatorStyle=NO;

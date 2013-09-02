@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"首页" imageName:@"btn_back_home1" target:self action:@selector(back)];
+    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"首页" imageName:@"btn_back_home" target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = leftBarBtn;
     
     [self.navigationItem setCustomTitle:@"我的车载"];
@@ -81,7 +81,7 @@
         NSString *name = [NSString stringWithFormat:@"icon_mycarin_%d",i + 1];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
-        [button setFrame:CGRectMake(17 + 75 * x, 80 + 105 * y, 60, 60)];
+        [button setFrame:CGRectMake(17 + 75 * x, 25 + 105 * y, 60, 60)];
         button.tag = i;
         [button addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];

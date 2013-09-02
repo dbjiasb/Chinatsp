@@ -44,12 +44,22 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController setNavigationBarHidden:NO];
-    self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:(iPhone5?@"home_bg-568h":@"home_bg")]];
-    self.navigationController.navigationBar.tintColor=[UIColor blackColor];
-    self.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"首页" style:UIBarButtonItemStyleBordered target:self action:@selector(exit)] autorelease];
+    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"首页" imageName:@"btn_back_home" target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    
+    [self.navigationItem setCustomTitle:@"更多"];
+
+    [self loadBG];
     [self initViews];
 	// Do any additional setup after loading the view.
+}
+
+- (void)loadBG
+{
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, [MyUtil viewHeight])];
+    bg.image = [UIImage imageNamed:@"bg_subviews"];
+    [self.view addSubview:bg];
+    [bg release];
 }
 
 -(void)initViews
@@ -58,44 +68,64 @@
     userInfo.frame=CGRectMake((320.0-288.5)/2, 10.0f, 288.0, 42.5);
     userInfo.tag=UserInfoTag;
     [userInfo addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [userInfo setImage:[UIImage imageNamed:@"more_user"] forState:UIControlStateNormal];
+    [userInfo setBackgroundImage:[UIImage imageNamed:@"more_btn_01"] forState:UIControlStateNormal];
+    [userInfo setTitle:@"个人信息" forState:UIControlStateNormal];
+    [userInfo setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
     [self.view addSubview:userInfo];
     
     UIButton *carInfo=[UIButton buttonWithType:UIButtonTypeCustom];
     carInfo.frame=CGRectMake((320.0-288.5)/2,userInfo.frame.origin.y + userInfo.frame.size.height+10, 288.0, 42.5);
     carInfo.tag=CarInfoTag;
     [carInfo addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [carInfo setImage:[UIImage imageNamed:@"more_carinf"] forState:UIControlStateNormal];
+    [carInfo setBackgroundImage:[UIImage imageNamed:@"more_btn_01"] forState:UIControlStateNormal];
+    [carInfo setTitle:@"车辆信息" forState:UIControlStateNormal];
+    [carInfo setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:carInfo];
     
     UIButton *aboutSoft=[UIButton buttonWithType:UIButtonTypeCustom];
     [aboutSoft addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     aboutSoft.frame=CGRectMake((320.0-288.5)/2,carInfo.frame.origin.y + carInfo.frame.size.height+10, 288.0, 42.5);
     aboutSoft.tag=AboutSoftTag;
-    [aboutSoft setImage:[UIImage imageNamed:@"more_about"] forState:UIControlStateNormal];
+    [aboutSoft setBackgroundImage:[UIImage imageNamed:@"more_btn_01"] forState:UIControlStateNormal];
+    [aboutSoft setTitle:@"关于软件" forState:UIControlStateNormal];
+    [aboutSoft setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:aboutSoft];
     
     UIButton *softupgrade=[UIButton buttonWithType:UIButtonTypeCustom];
     softupgrade.frame=CGRectMake((320.0-288.5)/2, aboutSoft.frame.origin.y + aboutSoft.frame.size.height +10, 288.0,42.5);
     softupgrade.tag=CheckSoftTag;
     [softupgrade addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [softupgrade setImage:[UIImage imageNamed:@"more_upgrade"] forState:UIControlStateNormal];
+    [softupgrade setBackgroundImage:[UIImage imageNamed:@"more_btn_01"] forState:UIControlStateNormal];
+    [softupgrade setTitle:@"软件升级" forState:UIControlStateNormal];
+    [softupgrade setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:softupgrade];
     
     UIButton *recFriend=[UIButton buttonWithType:UIButtonTypeCustom];
     recFriend.frame=CGRectMake((320.0-288.5)/2, softupgrade.frame.origin.y + softupgrade.frame.size.height +10, 288.0, 42.5);
     recFriend.tag=RecommendFriendTag;
     [recFriend addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [recFriend setImage:[UIImage imageNamed:@"more_rec"] forState:UIControlStateNormal];
+    [recFriend setBackgroundImage:[UIImage imageNamed:@"more_btn_01"] forState:UIControlStateNormal];
+    [recFriend setTitle:@"推荐好友" forState:UIControlStateNormal];
+    [recFriend setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:recFriend];
     
     UIButton *logout=[UIButton buttonWithType:UIButtonTypeCustom];
     logout.frame=CGRectMake((320.0-288.5)/2, recFriend.frame.origin.y + recFriend.frame.size.height +10, 288.0,42.5);
     logout.tag=LogoutTag;
     [logout addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [logout setImage:[UIImage imageNamed:@"more_logout"] forState:UIControlStateNormal];
+    [logout setBackgroundImage:[UIImage imageNamed:@"more_btn_01"] forState:UIControlStateNormal];
+    [logout setTitle:@"注销" forState:UIControlStateNormal];
+    [logout setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:logout];
 }
+
+- (void)back
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 -(void)exit
 {

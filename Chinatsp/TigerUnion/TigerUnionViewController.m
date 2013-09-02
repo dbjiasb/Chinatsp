@@ -8,7 +8,9 @@
 
 #import "TigerUnionViewController.h"
 #import "CarBlogViewController.h"
-
+#import "ActivityViewController.h"
+#import "FriendsViewController.h"
+#import "ChatViewController.h"
 @interface TigerUnionViewController ()
 
 @end
@@ -30,7 +32,7 @@
     [super viewDidLoad];
     
     
-    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"首页" imageName:@"btn_back_home1" target:self action:@selector(back)];
+    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"首页" imageName:@"btn_back_home" target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = leftBarBtn;
     
     [self.navigationItem setCustomTitle:@"虎翼联盟"];
@@ -120,7 +122,33 @@
             [controller release];
         }
             break;
+        case 1:
+        { //组织活动
+            ActivityViewController *controller = [[ActivityViewController alloc] init];
             
+            [self.navigationController pushViewController:controller animated:YES];
+            
+            [controller release];
+        }
+            break;
+        case 2:
+        {//好友在图
+            FriendsViewController *controller = [[FriendsViewController alloc] init];
+            
+            [self.navigationController pushViewController:controller animated:YES];
+            
+            [controller release];
+        }
+            break;
+        case 3:
+        {//即时通讯
+            ChatViewController *controller = [[ChatViewController alloc] init];
+            
+            [self.navigationController pushViewController:controller animated:YES];
+            
+            [controller release];
+        }
+            break;
         default:
             break;
     }

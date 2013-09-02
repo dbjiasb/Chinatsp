@@ -2,7 +2,7 @@
 //  ChatViewController.m
 //  Chinatsp
 //
-//  Created by yuante on 13-4-17.
+//  Created by Dragon on 13-9-2.
 //  Copyright (c) 2013年 yuante.Yuan Wen. All rights reserved.
 //
 
@@ -19,7 +19,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.hidesBottomBarWhenPushed=YES;
     }
     return self;
 }
@@ -27,7 +26,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"返回" imageName:@"btn_back_home" target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    [self.navigationItem setCustomTitle:@"即时通讯"];
+    
+    [self loadBG];
+}
+
+- (void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)loadBG
+{
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, [MyUtil viewHeight])];
+    bg.image = [UIImage imageNamed:@"bg_subviews"];
+    [self.view addSubview:bg];
+    [bg release];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

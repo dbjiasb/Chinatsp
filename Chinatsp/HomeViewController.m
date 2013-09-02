@@ -379,29 +379,37 @@
         case 6:
         {//洗车
             WashingCarViewController *controller = [[WashingCarViewController alloc] init];
-            [self presentViewController:controller animated:YES completion:nil];
+            UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:navi animated:YES completion:nil];
             [controller release];
+            [navi release];
         }
             break;
         case 7:
         {//加油
             AddOilViewController *controller = [[AddOilViewController alloc] init];
-            [self presentViewController:controller animated:YES completion:nil];
+            UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:navi animated:YES completion:nil];
             [controller release];
+            [navi release];
         }
             break;
         case 8:
         {//停车场
             ParkingViewController *controller = [[ParkingViewController alloc] init];
-            [self presentViewController:controller animated:YES completion:nil];
+            UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:navi animated:YES completion:nil];
             [controller release];
+            [navi release];
         }
             break;
         case 9:
         {//违章查询
             BreakRulesViewController *controller = [[BreakRulesViewController alloc] init];
-            [self presentViewController:controller animated:YES completion:nil];
+            UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:navi animated:YES completion:nil];
             [controller release];
+            [navi release];
         }
             break;
         default:
