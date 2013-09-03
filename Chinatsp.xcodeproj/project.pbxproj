@@ -429,6 +429,10 @@
 		63B0B80C170135B200FBE74B /* tab_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B0B808170135B200FBE74B /* tab_setting@2x.png */; };
 		63B37566170421E2001ED2D3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B37565170421E2001ED2D3 /* CoreLocation.framework */; };
 		63B37568170421F2001ED2D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B37567170421F2001ED2D3 /* QuartzCore.framework */; };
+		9E86EE4117D5F38800642ECE /* CarInfoCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E86EE4017D5F38800642ECE /* CarInfoCheckViewController.m */; };
+		9E86EE4617D5F8E500642ECE /* car_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E86EE4517D5F8E500642ECE /* car_01.jpg */; };
+		9EEA03C017D6332200CE9B32 /* CarInfoCheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EEA03BF17D6332200CE9B32 /* CarInfoCheckViewController.xib */; };
+		9EEA03C217D6332E00CE9B32 /* CarInfoCheck_tmp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEA03C117D6332E00CE9B32 /* CarInfoCheck_tmp.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -996,6 +1000,11 @@
 		63B0B808170135B200FBE74B /* tab_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_setting@2x.png"; sourceTree = "<group>"; };
 		63B37565170421E2001ED2D3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		63B37567170421F2001ED2D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9E86EE3F17D5F38800642ECE /* CarInfoCheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfoCheckViewController.h; sourceTree = "<group>"; };
+		9E86EE4017D5F38800642ECE /* CarInfoCheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInfoCheckViewController.m; sourceTree = "<group>"; };
+		9E86EE4517D5F8E500642ECE /* car_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = car_01.jpg; sourceTree = "<group>"; };
+		9EEA03BF17D6332200CE9B32 /* CarInfoCheckViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarInfoCheckViewController.xib; sourceTree = "<group>"; };
+		9EEA03C117D6332E00CE9B32 /* CarInfoCheck_tmp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CarInfoCheck_tmp.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1157,6 +1166,7 @@
 		250E90DB17CDB42A006BB090 /* mycarin */ = {
 			isa = PBXGroup;
 			children = (
+				9E86EE4217D5F8C600642ECE /* CarInfoCheck */,
 				250E90DC17CDB50C006BB090 /* icon_mycarin_1.png */,
 				250E90DD17CDB50C006BB090 /* icon_mycarin_2.png */,
 				250E90DE17CDB50C006BB090 /* icon_mycarin_3.png */,
@@ -1443,6 +1453,10 @@
 				254BBBA217D04092006A37E7 /* Cell */,
 				254BBB9F17D03FDA006A37E7 /* RemoteCheckViewController.h */,
 				254BBBA017D03FDA006A37E7 /* RemoteCheckViewController.m */,
+				9EEA03C117D6332E00CE9B32 /* CarInfoCheck_tmp.png */,
+				9E86EE3F17D5F38800642ECE /* CarInfoCheckViewController.h */,
+				9E86EE4017D5F38800642ECE /* CarInfoCheckViewController.m */,
+				9EEA03BF17D6332200CE9B32 /* CarInfoCheckViewController.xib */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -2046,6 +2060,14 @@
 			name = Img;
 			sourceTree = "<group>";
 		};
+		9E86EE4217D5F8C600642ECE /* CarInfoCheck */ = {
+			isa = PBXGroup;
+			children = (
+				9E86EE4517D5F8E500642ECE /* car_01.jpg */,
+			);
+			path = CarInfoCheck;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2407,6 +2429,9 @@
 				25A0739F17D490200042E955 /* bg_navi@2x.png in Resources */,
 				2193F68317D4C09500F0E77D /* btn_back_home@2x.png in Resources */,
 				2193F69217D4D17D00F0E77D /* more_btn_01@2x.png in Resources */,
+				9E86EE4617D5F8E500642ECE /* car_01.jpg in Resources */,
+				9EEA03C017D6332200CE9B32 /* CarInfoCheckViewController.xib in Resources */,
+				9EEA03C217D6332E00CE9B32 /* CarInfoCheck_tmp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2518,6 +2543,7 @@
 				2193F68617D4C40A00F0E77D /* FriendsViewController.m in Sources */,
 				2193F68917D4C66F00F0E77D /* ChatViewController.m in Sources */,
 				2193F68C17D4C7B000F0E77D /* ActivityViewController.m in Sources */,
+				9E86EE4117D5F38800642ECE /* CarInfoCheckViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

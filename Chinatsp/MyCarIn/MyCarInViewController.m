@@ -8,6 +8,7 @@
 
 #import "MyCarInViewController.h"
 #import "RemoteCheckViewController.h"
+#import "CarInfoCheckViewController.h"
 
 @interface MyCarInViewController ()
 
@@ -105,7 +106,11 @@
 {
     switch (button.tag) {
         case 0:
-            
+        {//车况查询
+            CarInfoCheckViewController *controller = [[CarInfoCheckViewController alloc] initWithNibName:@"CarInfoCheckViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
+            [controller release];
+        }
             break;
         case 1:
         {//远程诊断
