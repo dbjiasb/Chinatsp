@@ -32,10 +32,16 @@
 
     _dataList = [[NSMutableArray alloc] initWithCapacity:0];
     
-    [self loadBG];
-    [self loadHeaderView];
+    UIBarButtonItem *leftBarBtn = [UIBarButtonItem buttonWithTitle:@"返回" imageName:@"btn_back_home" target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 48, 320, [MyUtil viewHeight] - 48) style:UITableViewStylePlain];
+    [self.navigationItem setCustomTitle:@"远程诊断"];
+
+    
+    [self loadBG];
+//    [self loadHeaderView];
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, [MyUtil viewHeight] - 44) style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -66,7 +72,7 @@
 
 - (void)loadBG
 {
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 45, 320, [MyUtil viewHeight] - 45)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, [MyUtil viewHeight])];
     bg.image = [UIImage imageNamed:@"bg_subviews"];
     [self.view addSubview:bg];
     [bg release];
